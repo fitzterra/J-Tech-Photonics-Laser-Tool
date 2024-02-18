@@ -10,15 +10,15 @@
 # EVERYTHING below it will be removed on every build.
 EXT_DIR = _inks_ext
 
-# The sources making up the files to copy to the extension dir
-EXT_SRC =  \
-  laser \
-  submodules/svgtogcode/svg_to_gcode
+# The top level `laser` dir that will go under EXT_DIR
+SRC_LASER = laser
+# The SvgToGcode source dir we get from the submodules dir. This is the actual
+# `svg_to_gcode` module that will be copied into the `laser` dir above.
+SRC_STG = submodules/svgtogcode/svg_to_gcode
 
 # Build the Inkscape extention
 extension:
 	@rm -rf $(EXT_DIR)
 	@mkdir -p $(EXT_DIR)
-	for s in $(EXT_SRC); do \
-		cp -v -aR $$s $(EXT_DIR) ; \
-	done
+	@cp -v -aR $(SRC_LASER) $(EXT_DIR)/$(SRC_LASER)
+	@cp -v -aR $(SRC_STG) $(EXT_DIR)/$(SRC_LASER)
