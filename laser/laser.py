@@ -110,9 +110,15 @@ class GcodeExtension(EffectExtension):
             footer.append(interface_instance.linear_move(x=0, y=0))
 
         # Generate gcode
-        gcode_compiler = Compiler(custom_interface, self.options.travel_speed, self.options.cutting_speed,
-                                  self.options.pass_depth, dwell_time=self.options.dwell_time, custom_header=header,
-                                  custom_footer=footer, unit=self.options.unit)
+        gcode_compiler = Compiler(custom_interface,
+                                  self.options.travel_speed,
+                                  self.options.cutting_speed,
+                                  self.options.pass_depth,
+                                  dwell_time=self.options.dwell_time,
+                                  dwell_after_tool_off=self.options.dwell_after_tool_off,
+                                  custom_header=header,
+                                  custom_footer=footer,
+                                  unit=self.options.unit)
 
         transformation = Transformation()
 
