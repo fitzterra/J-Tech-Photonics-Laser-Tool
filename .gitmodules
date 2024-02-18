@@ -1,0 +1,4 @@
+[submodule "submodules/svgtogcode"]
+	path = submodules/svgtogcode
+	url = git@gitlab.gaul.za:gaulnet/svgtogcode.git
+	branch = feature/dwell_after_tool_off
